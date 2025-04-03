@@ -8,7 +8,9 @@ export default function Home() {
 
   useEffect(() => {
     const fetchQRCode = async () => {
-      const { data } = await axios.post("http://localhost:5001/qr-code");
+      const { data } = await axios.post(
+        "qr-code-generator-production-1ecc.up.railway.app/qr-code"
+      );
       setQrCode(data.qrCode);
       setUrl(data.url);
     };
