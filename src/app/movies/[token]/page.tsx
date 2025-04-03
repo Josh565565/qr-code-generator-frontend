@@ -17,7 +17,9 @@ export default function Movies() {
   useEffect(() => {
     if (!token) return;
     axios
-      .get(`qr-code-generator-production-1ecc.up.railway.app/qr-code/${token}`)
+      .get(
+        `https://qr-code-generator-production-1ecc.up.railway.app/qr-code/${token}`
+      )
       .then(({ data }) => setMovies(data))
       .catch((error) => console.error("Error fetching movies:", error));
   }, [token]);
