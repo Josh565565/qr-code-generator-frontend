@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { QRCODE_BASE_URL } from "@app/libs/constants";
 
 export default function Home() {
   const [qrCode, setQrCode] = useState("");
@@ -8,9 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchQRCode = async () => {
-      const { data } = await axios.post(
-        "https://qr-code-generator-production-1ecc.up.railway.app/qr-code"
-      );
+      const { data } = await axios.post(`${QRCODE_BASE_URL}/qr-code`);
       setQrCode(data.qrCode);
       setUrl(data.url);
     };

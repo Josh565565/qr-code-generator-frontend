@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "next/navigation";
+import { QRCODE_BASE_URL } from "@app/libs/constants";
 
 export default function Movies() {
   const { token } = useParams();
@@ -17,9 +18,7 @@ export default function Movies() {
   useEffect(() => {
     if (!token) return;
     axios
-      .get(
-        `https://qr-code-generator-production-1ecc.up.railway.app/qr-code/${token}`
-      )
+      .get(`${QRCODE_BASE_URL}/qr-code/${token}`)
       .then(({ data }) => setMovies(data))
       .catch((error) => console.error("Error fetching movies:", error));
   }, [token]);
